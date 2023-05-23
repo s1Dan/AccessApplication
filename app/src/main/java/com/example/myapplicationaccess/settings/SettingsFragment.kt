@@ -38,6 +38,15 @@ class SettingsFragment : Fragment() {
                 .commit()
         }
 
+        val supportLinearLayout = view.findViewById<LinearLayout>(R.id.linearLayout_support_message)
+        supportLinearLayout.setOnClickListener {
+            val newFragment = SettingsSupportMessageFragment()
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, newFragment)
+                .addToBackStack(null)
+                .commit()
+        }
 
 
 
