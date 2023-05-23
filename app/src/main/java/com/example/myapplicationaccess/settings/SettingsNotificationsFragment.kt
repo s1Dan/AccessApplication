@@ -1,5 +1,7 @@
 package com.example.myapplicationaccess.settings
 
+import android.database.Cursor
+import android.media.RingtoneManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,15 +35,29 @@ class SettingsNotificationsFragment : Fragment() {
             // Обработка состояния переключателя
             if (isChecked) {
                 // Уведомления отключены
-                Toast.makeText(requireContext(), "Уведомления отключены", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Уведомления включены", Toast.LENGTH_SHORT).show()
             } else {
                 // Уведомления включены
-                Toast.makeText(requireContext(), "Уведомления включены", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Уведомления выключены", Toast.LENGTH_SHORT).show()
             }
         }
 
         // Создаем адаптер для списка звуков
-        val soundList = listOf("Звук 1", "Звук 2", "Звук 3")
+        //val soundList = listOf("Звук 1", "Звук 2", "Звук 3")
+
+
+        val ringtoneManager = RingtoneManager(context)
+        ringtoneManager.setType(RingtoneManager.TYPE_NOTIFICATION)
+        val cursor: Cursor = ringtoneManager.cursor
+
+        val soundList = mutableListOf<String>()
+
+        while (cursor.moveToNext()) {
+            val title: String = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX)
+            soundList.add(title)
+        }
+
+        cursor.close()
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, soundList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerSound.adapter = adapter
