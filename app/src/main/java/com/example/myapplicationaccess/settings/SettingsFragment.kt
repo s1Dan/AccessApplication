@@ -48,6 +48,16 @@ class SettingsFragment : Fragment() {
                 .commit()
         }
 
+        val notificationsLinearLayout = view.findViewById<LinearLayout>(R.id.linearLayout_notifications)
+        notificationsLinearLayout.setOnClickListener {
+            val newFragment = SettingsNotificationsFragment()
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, newFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
 
 
 

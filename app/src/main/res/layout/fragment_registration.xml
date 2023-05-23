@@ -27,7 +27,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/grey"
-        android:hint="Введите Имя"/>
+        android:hint="Введите Имя"
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/ed_registration_secondName"
@@ -40,7 +41,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/grey"
-        android:hint="Введите Фамилию"/>
+        android:hint="Введите Фамилию"
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/ed_registration_day"
@@ -53,7 +55,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/grey"
-        android:hint="Введите дату рождения"/>
+        android:hint="Введите дату рождения"
+        android:inputType="date"/>
 
     <EditText
         android:id="@+id/ed_registration_telephone"
@@ -66,7 +69,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/grey"
-        android:hint="Введите номер телефона" />
+        android:hint="Введите номер телефона"
+        android:inputType="phone"/>
 
     <EditText
         android:id="@+id/ed_registration_email"
@@ -79,7 +83,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/grey"
-        android:hint="Введите почтовый адрес" />
+        android:hint="Введите почтовый адрес"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/ed_registration_password"
@@ -92,7 +97,8 @@
         android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
         android:background="@color/grey"
-        android:hint="Введите пароль"/>
+        android:hint="Введите пароль"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/btn_Registration"
