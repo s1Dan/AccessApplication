@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application Access</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_navigation_item_calls">Calls</string>
+    <string name="bottom_navigation_item_cameras">Cameras</string>
+    <string name="bottom_navigation_item_settings">Settings</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragment_calls"
+        android:icon="@drawable/baseline_call_24"
+        android:title="@string/bottom_navigation_item_calls" />
+    <item
+        android:id="@+id/fragment_cameras"
+        android:icon="@drawable/baseline_camera_alt_24"
+        android:title="@string/bottom_navigation_item_cameras" />
+    <item
+        android:id="@+id/fragment_settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="@string/bottom_navigation_item_settings" />
+
+</menu>
