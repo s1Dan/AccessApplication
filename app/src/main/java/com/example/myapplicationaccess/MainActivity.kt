@@ -32,11 +32,15 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(SettingsFragment()) // Заменяем текущий фрагмент на FragmentSettings
                     return@setOnNavigationItemSelectedListener true
                 }
-                else -> return@setOnNavigationItemSelectedListener false
             }
+            false
         }
+
         // Устанавливаем фрагмент по умолчанию при старте активити
-        replaceFragment(CamerasFragment())
+        if (savedInstanceState == null) {
+            // Открываем центральный фрагмент при запуске приложения
+            bottomNavigationView.selectedItemId = R.id.fragment_cameras
+        }
     }
 
     // Функция для замены фрагмента в контейнере fragment_container

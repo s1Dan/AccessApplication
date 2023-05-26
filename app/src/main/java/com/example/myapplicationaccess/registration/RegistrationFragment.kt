@@ -9,12 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.myapplicationaccess.R
-import com.example.myapplicationaccess.postgresql.PostgreSQLManager
+import com.example.myapplicationaccess.mysql.MySQLManager
 
 
 class RegistrationFragment : Fragment() {
 
-    private lateinit var dbManager: PostgreSQLManager
+    private lateinit var dbManager: MySQLManager
     private lateinit var editTextFirstName: EditText
     private lateinit var editTextLastName: EditText
     private lateinit var editTextBirthday: EditText
@@ -28,16 +28,18 @@ class RegistrationFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
-        dbManager = PostgreSQLManager()
 
         // Получение ссылок на EditText
-        val editTextFirstName = view.findViewById<EditText>(R.id.ed_firstName)
-        val editTextLastName = view.findViewById<EditText>(R.id.ed_registration_secondName)
-        val editTextBirthday = view.findViewById<EditText>(R.id.ed_registration_day)
-        val editTextEmail = view.findViewById<EditText>(R.id.ed_registration_email)
-        val editTextPhoneNumber = view.findViewById<EditText>(R.id.ed_registration_telephone)
-        val editTextPassword = view.findViewById<EditText>(R.id.ed_registration_password)
+        editTextFirstName = view.findViewById<EditText>(R.id.ed_firstName)
+        editTextLastName = view.findViewById<EditText>(R.id.ed_registration_secondName)
+        editTextBirthday = view.findViewById<EditText>(R.id.ed_registration_day)
+        editTextEmail = view.findViewById<EditText>(R.id.ed_registration_email)
+        editTextPhoneNumber = view.findViewById<EditText>(R.id.ed_registration_telephone)
+        editTextPassword = view.findViewById<EditText>(R.id.ed_registration_password)
         val buttonRegister = view.findViewById<Button>(R.id.btn_Registration)
+
+        // Инициализация экземпляра MySQLManager
+        dbManager = MySQLManager()
 
         // Обработчик нажатия на кнопку "Регистрация"
         buttonRegister.setOnClickListener {
@@ -51,9 +53,12 @@ class RegistrationFragment : Fragment() {
             if (firstName.isNotEmpty() && lastName.isNotEmpty() && birthday.isNotEmpty() &&
                 email.isNotEmpty() && phoneNumber.isNotEmpty() && password.isNotEmpty()) {
 
+                // Выполнение операции вставки в базу данных
                 val query = "INSERT INTO users (first_name, last_name, birthday, email, phone_number, password) " +
                         "VALUES ('$firstName', '$lastName', '$birthday', '$email', '$phoneNumber', '$password')"
-                dbManager.executeNonQuery(query)
+                dbManager.connect()
+                dbManager.executeQuery(query)
+                dbManager.disconnect()
 
                 clearFields()
             } else {
@@ -64,6 +69,7 @@ class RegistrationFragment : Fragment() {
         }
         return view
     }
+
     private fun clearFields() {
         editTextFirstName.text.clear()
         editTextLastName.text.clear()
@@ -72,5 +78,5 @@ class RegistrationFragment : Fragment() {
         editTextPhoneNumber.text.clear()
         editTextPassword.text.clear()
     }
-
 }
+
