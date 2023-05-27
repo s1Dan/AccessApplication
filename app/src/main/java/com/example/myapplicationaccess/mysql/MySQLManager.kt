@@ -5,7 +5,7 @@ import java.sql.DriverManager
 import java.sql.SQLException
 
 class MySQLManager {
-    private val url = "jdbc:mysql://localhost:3306/testusers"
+    private val url = "jdbc:mysql://localhost:3306/usersdb"
     private val username = "root"
     private val password = "root"
     private var connection: Connection? = null
@@ -28,13 +28,11 @@ class MySQLManager {
         }
     }
 
-    // Пример выполнения операции с базой данных
     fun executeQuery(query: String) {
         try {
             val statement = connection?.createStatement()
             val resultSet = statement?.executeQuery(query)
 
-            // Обработка результатов
             while (resultSet?.next() == true) {
                 val id = resultSet.getInt("id")
                 val name = resultSet.getString("name")
@@ -47,17 +45,50 @@ class MySQLManager {
             e.printStackTrace()
         }
     }
+
+    fun signIn(login: String, password: String): Boolean {
+        var success = false
+        try {
+            val query = "SELECT COUNT(*) FROM users WHERE login = ? AND password = ?"
+            val preparedStatement = connection?.prepareStatement(query)
+            preparedStatement?.setString(1, login)
+            preparedStatement?.setString(2, password)
+            val resultSet = preparedStatement?.executeQuery()
+
+            resultSet?.next()
+            val count = resultSet?.getInt(1)
+
+            if (count != null && count > 0) {
+                success = true
+            }
+
+            resultSet?.close()
+            preparedStatement?.close()
+        } catch (e: SQLException) {
+            e.printStackTrace()
+        }
+        return success
+    }
 }
 
+/*
 fun main() {
+
     val manager = MySQLManager()
     manager.connect()
 
-    // Пример выполнения операции с базой данных
     val query = "SELECT id, name FROM users"
     manager.executeQuery(query)
 
+    val login = "user"
+    val password = "password"
+    val success = manager.signIn(login, password)
+    println("Авторизация: $success")
+
     manager.disconnect()
 }
+
+ */
+
 
 
