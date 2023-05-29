@@ -1,3 +1,5 @@
+package com.example.myapplicationaccess.settings
+
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater

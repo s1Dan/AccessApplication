@@ -49,7 +49,8 @@ class MySQLManager {
     fun signIn(login: String, password: String): Boolean {
         var success = false
         try {
-            val query = "SELECT COUNT(*) FROM users WHERE login = ? AND password = ?"
+            val query = "SELECT COUNT(*) FROM allusers WHERE email = ? AND password = ?"
+
             val preparedStatement = connection?.prepareStatement(query)
             preparedStatement?.setString(1, login)
             preparedStatement?.setString(2, password)

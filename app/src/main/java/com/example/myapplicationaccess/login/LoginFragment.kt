@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.myapplicationaccess.R
 import com.example.myapplicationaccess.mysql.MySQLManager
+import com.example.myapplicationaccess.registration.RegistrationFragment
 
 
 class LoginFragment : Fragment() {
@@ -55,6 +56,15 @@ class LoginFragment : Fragment() {
                 // Заполните все поля
                 Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btn_Registration.setOnClickListener {
+            // Переходим на RegistrationFragment
+            val registrationFragment = RegistrationFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, registrationFragment)
+                .addToBackStack(null)
+                .commit()
         }
 
         return view

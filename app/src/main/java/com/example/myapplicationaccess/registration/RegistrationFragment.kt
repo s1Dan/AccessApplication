@@ -54,7 +54,7 @@ class RegistrationFragment : Fragment() {
                 email.isNotEmpty() && phoneNumber.isNotEmpty() && password.isNotEmpty()) {
 
                 // Выполнение операции вставки в базу данных
-                val query = "INSERT INTO users (first_name, last_name, birthday, email, phone_number, password) " +
+                val query = "INSERT INTO allusers (first_name, last_name, birthday, email, phone_number, password) " +
                         "VALUES ('$firstName', '$lastName', '$birthday', '$email', '$phoneNumber', '$password')"
                 dbManager.connect()
                 dbManager.executeQuery(query)
@@ -80,3 +80,8 @@ class RegistrationFragment : Fragment() {
     }
 }
 
+/*
+INSERT INTO allusers (first_name, last_name, birthday, email, phone_number, password)
+VALUES ('$firstName', '$lastName', '$birthday', '$email', '$phoneNumber', '$password')"
+
+ */

@@ -3,28 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/registrationFragment">
+    app:startDestination="@id/camerasFragment2">
 
     <!-- Определение фрагментов -->
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplicationaccess.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_camerasFragment2"
+            app:destination="@id/camerasFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.myapplicationaccess.registration.RegistrationFragment"
-        android:label="RegistrationFragment" />
-
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/callsFragment"
-        android:name="com.example.myapplicationaccess.calls.CallsFragment"
-        android:label="CallsFragment" />
-
-    <fragment
-        android:id="@+id/camerasFragment"
+        android:id="@+id/camerasFragment2"
         android:name="com.example.myapplicationaccess.cameras.CamerasFragment"
-        android:label="CamerasFragment" />
-
+        android:label="fragment_cameras"
+        tools:layout="@layout/fragment_cameras" >
+        <action
+            android:id="@+id/action_camerasFragment2_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
+        <action
+            android:id="@+id/action_camerasFragment2_to_callsFragment2"
+            app:destination="@id/callsFragment2" />
+    </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
+        android:id="@+id/callsFragment2"
+        android:name="com.example.myapplicationaccess.calls.CallsFragment"
+        android:label="fragment_calls"
+        tools:layout="@layout/fragment_calls" />
+    <fragment
+        android:id="@+id/settingsFragment2"
         android:name="com.example.myapplicationaccess.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment2_to_settingsChangePasswordFragment"
+            app:destination="@id/settingsChangePasswordFragment" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_settingsChangeTelephoneFragment"
+            app:destination="@id/settingsChangeTelephoneFragment" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_settingsNotificationsFragment"
+            app:destination="@id/settingsNotificationsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_settingsSupportMessageFragment"
+            app:destination="@id/settingsSupportMessageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsChangePasswordFragment"
+        android:name="com.example.myapplicationaccess.settings.SettingsChangePasswordFragment"
+        android:label="fragment_settings_change_password"
+        tools:layout="@layout/fragment_settings_change_password" />
+    <fragment
+        android:id="@+id/settingsChangeTelephoneFragment"
+        android:name="com.example.myapplicationaccess.settings.SettingsChangeTelephoneFragment"
+        android:label="fragment_settings_change_telephone"
+        tools:layout="@layout/fragment_settings_change_telephone" />
+    <fragment
+        android:id="@+id/settingsNotificationsFragment"
+        android:name="com.example.myapplicationaccess.settings.SettingsNotificationsFragment"
+        android:label="fragment_settings_notifications"
+        tools:layout="@layout/fragment_settings_notifications" />
+    <fragment
+        android:id="@+id/settingsSupportMessageFragment"
+        android:name="com.example.myapplicationaccess.settings.SettingsSupportMessageFragment"
+        android:label="fragment_settings_support_message"
+        tools:layout="@layout/fragment_settings_support_message" />
 
 </navigation>
 
